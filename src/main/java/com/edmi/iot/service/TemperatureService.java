@@ -11,8 +11,12 @@ import java.util.List;
 
 @Service
 public class TemperatureService {
+    private final TemperatureRepository temperatureRepository;
+
     @Autowired
-    private TemperatureRepository temperatureRepository;
+    public TemperatureService(TemperatureRepository temperatureRepository) {
+        this.temperatureRepository = temperatureRepository;
+    }
 
     public Temperature findById(Long uuid){
         Temperature existsTemp = temperatureRepository.findById(uuid)

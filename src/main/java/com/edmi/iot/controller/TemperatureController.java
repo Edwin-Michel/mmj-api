@@ -12,10 +12,14 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.GET, RequestMethod.OPTIONS, RequestMethod.HEAD, RequestMethod.PATCH, RequestMethod.POST, RequestMethod.PUT})
-@RequestMapping(value = "/temp")
+@RequestMapping(value = "/ph")
 public class TemperatureController {
+    private final TemperatureService temperatureService;
+
     @Autowired
-    private TemperatureService temperatureService;
+    public TemperatureController(TemperatureService temperatureService) {
+        this.temperatureService = temperatureService;
+    }
 
     @GetMapping(value = "/{idTemp}")
     public ResponseEntity<TemperatureDTO> getHello(@PathVariable("idTemp") Long uuid){
